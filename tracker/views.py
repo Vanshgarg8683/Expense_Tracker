@@ -51,24 +51,43 @@ def logoutpage(request):
     logout(request)
     messages.success(request, 'logged out successfully!')
     return redirect('/login')
-@login_required(login_url = '/login')
+
+@login_required(login_url='/login')
 def index(request):
-    if(request.method=="POST"):
+
+    if request.method == "POST":
         description = request.POST.get('description')
         amount = request.POST.get('amount')
+
         transaction.objects.create(
             description=description,
             amount=amount,
             created_by=request.user
         )
-    context = {
-        'transaction' : transaction.objects.filter(created_by=request.user), 
-        'balance' : transaction.objects.all().aggregate(balance = Sum('amount'))['balance'] or 0.00,
-        'income' : transaction.objects.filter(created_by=request.user, amount__gte = 0).aggregate(income = Sum('amount'))['income'] or 0.00,
-        'expense' : transaction.objects.filter(created_by=request.user, amount__lte = 0).aggregate(expense = Sum('amount'))['expense'] or 0.00
-    }
-    return render(request, 'index.html', context)
 
+    transactions = transaction.objects.filter(created_by=request.user)
+
+    context = {
+        'transaction': transactions,
+
+        'balance': transactions.aggregate(
+            balance=Sum('amount')
+        )['balance'] or 0.00,
+
+        'income': transactions.filter(
+            amount__gte=0
+        ).aggregate(
+            income=Sum('amount')
+        )['income'] or 0.00,
+
+        'expense': transactions.filter(
+            amount__lte=0
+        ).aggregate(
+            expense=Sum('amount')
+        )['expense'] or 0.00
+    }
+
+    return render(request, 'index.html', context)
 
 def remove(request, uuid):
     transaction.objects.get(uuid = uuid, created_by=request.user).delete()
