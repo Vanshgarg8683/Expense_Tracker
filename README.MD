@@ -145,21 +145,15 @@ Add screenshots here.
 
 ### Login
 
-```
-assets/login.png
-```
+!LOGIN(assets/login.png)
 
 ### Registration
 
-```
-assets/register.png
-```
+!REGISTER(assets/register.png)
 
 ### Dashboard
 
-```
-assets/dashboard.png
-```
+!DASHBOARD(assets/dashboard.png)
 
 ---
 
