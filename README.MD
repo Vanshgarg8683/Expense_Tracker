@@ -145,15 +145,15 @@ Add screenshots here.
 
 ### Login
 
-!LOGIN(assets/login.png)
+![LOGIN](assets/login.png)
 
 ### Registration
 
-!REGISTER(assets/register.png)
+![REGISTER](assets/register.png)
 
 ### Dashboard
 
-!DASHBOARD(assets/dashboard.png)
+![DASHBOARD](assets/dashboard.png)
 
 ---
 
