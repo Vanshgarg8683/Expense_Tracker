@@ -200,20 +200,6 @@ pip install -r requirements.txt
 
 ---
 
-## 🌟 Future Improvements
-
-- Edit Transactions
-- Transaction Categories
-- Monthly Expense Reports
-- Charts and Graphs
-- Search and Filter Transactions
-- Budget Planning
-- CSV/PDF Export
-- Dark Mode
-- REST API using Django REST Framework
-
----
-
 ## 👨‍💻 Author
 
 **Vansh Garg**
