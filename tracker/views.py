@@ -41,7 +41,7 @@ def loginpage(request):
         userobj = authenticate(username = username, password=password)
         if not userobj:
             messages.error(request, 'Incorrect Credentials!')
-
+            return redirect('/login')
         login(request, userobj)
         messages.success(request, 'You have logged in successfully!')
         return redirect('/')
